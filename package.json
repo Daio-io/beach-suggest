@@ -6,6 +6,9 @@
   "scripts": {
     "test": "sh test.sh"
   },
+  "engines": {
+    "iojs": "2.3.x"
+  },
   "author": "daio.io",
   "license": "ISC",
   "repository": {
