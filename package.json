@@ -1,0 +1,25 @@
+{
+  "name": "beach-suggest",
+  "version": "0.0.1",
+  "description": "A beach suggestion service",
+  "main": "index.js",
+  "scripts": {
+    "test": "sh test.sh"
+  },
+  "author": "daio.io",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Daveloper87/beach-suggest.git"
+  },
+  "dependencies": {
+    "koa": "^0.21.0",
+    "koa-router": "^5.1.2",
+    "mongoose": "^4.0.5"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "got": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}
