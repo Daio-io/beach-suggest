@@ -15,6 +15,6 @@ var server = http.createServer(app.callback());
 
 server.listen(settings.port, function() {
 
-  console.log('Surf-Query Started on:', settings.port);
+  console.log('Beach-Suggest Started on port:', settings.port);
 
 });
