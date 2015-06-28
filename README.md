@@ -9,5 +9,6 @@ NOTE: Not currently deployed. Will be shortly
 # TODO:
 
 * Move to Elastic search
+* Caching
 * Add more locations
 * API KEY's
