@@ -26,9 +26,29 @@ function cleansey(value) {
   
 }
 
+/**
+ * Removes any string value from another string
+ * @param remove
+ * @param value
+ * @returns {string} - the new string | empty if not a string
+ */
+function removey(remove, value) {
+  
+  if (typeof remove === 'string' &&
+    typeof value === 'string') {
+    
+    return value.replace(remove, '');
+    
+  }
+  
+  return '';
+  
+}
+
 module.exports = {
   
   existy: existy,
-  cleansey: cleansey
+  cleansey: cleansey,
+  removey: removey
   
 };
