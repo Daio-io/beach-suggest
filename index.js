@@ -7,14 +7,27 @@ var settings = require('./api/conf/api.settings');
 
 // Bootstrapping
 require('./api/conf/api.bootstrap')();
-
 // Routes
 require('./api/conf/api.routes')(app);
 
 var server = http.createServer(app.callback());
 
-server.listen(settings.port, function() {
+function startServer() {
 
-  console.log('Beach-Suggest Started on port:', settings.port);
+  server.listen(settings.port, function() {
 
-});
+    console.log('Beach-Suggest Started on port:', settings.port);
+
+  });
+  
+}
+
+if (require.main === module) {
+  
+  startServer();
+  
+} else {
+  
+  module.exports = startServer();
+  
+}
