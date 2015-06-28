@@ -1,12 +1,21 @@
 'use strict';
 
+var tools = require('../utils/tools.js');
 var BeachModel = require('./beach.model');
 
 exports.suggestBeach = function *() {
 
-  let search = new RegExp(this.query.q, 'i');
-  let query = BeachModel.find({name: search}, 'id name country');
 
-  this.body = yield query.exec();
+  if (tools.existy(this.query.q)) {
+
+    let safeSearch = tools.cleansey(this.query.q);
+    let search = new RegExp(safeSearch, 'i');
+    let query = BeachModel.find({name: search}, 'id name country');
+
+    this.body = yield query.exec();
+    
+  } else {
+    this.body = [];
+  }
 
 };
