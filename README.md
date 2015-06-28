@@ -8,6 +8,6 @@ NOTE: Not currently deployed. Will be shortly
 
 # TODO:
 
-* Improve the searching - Tested using regex. Will be made safer
+* Move to Elastic search
 * Add more locations
 * API KEY's
