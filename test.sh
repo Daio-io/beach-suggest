@@ -3,6 +3,6 @@
 killall node
 node index &
 
-mocha
+mocha qa/
 killall node
 
