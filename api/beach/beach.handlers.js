@@ -5,7 +5,6 @@ var BeachModel = require('./beach.model');
 
 exports.suggestBeach = function *() {
 
-
   if (tools.existy(this.query.q)) {
 
     let safeSearch = tools.cleansey(this.query.q);

@@ -48,9 +48,9 @@ function removey(remove, value) {
 }
 
 /**
- *
- * @param clippable
- * @param clipLength
+ * Clips the end of the string so that the new length is the clipLength
+ * @param clippable {string} - string to clip
+ * @param clipLength {number} - amount the string should be clipped by
  * @returns {string}
  */
 function clippy(clippable, clipLength) {
