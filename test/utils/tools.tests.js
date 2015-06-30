@@ -27,7 +27,6 @@ describe('Util Tools', function() {
 
   describe('cleansey', function() {
 
-
     it('should keep spaces', function() {
 
       var word = 'hello world';
@@ -69,9 +68,6 @@ describe('Util Tools', function() {
     it('should return empty string if passed empty value', function() {
 
       expect(tools.cleansey()).to.be.empty;
-      expect(tools.cleansey(null)).to.be.empty;
-      expect(tools.cleansey(undefined)).to.be.empty;
-      expect().to.be.empty;
 
     })
 
@@ -101,5 +97,52 @@ describe('Util Tools', function() {
     });
     
   });
+  
+  describe('clippy', function() {
+    
+    it('should return clipped string', function() {
+      
+      var longString = 'hello i am a long string';
+      var clippedString = tools.clippy(longString, 5);
+      
+      expect(clippedString).to.have.length(5);
+      
+    }); 
+    
+    it('should ignore clips longer than actual string length', function() {
+      
+      var longString = 'hello I am a long string';
+      var clippedString = tools.clippy(longString, 100);
+      
+      expect(clippedString).to.have.length(longString.length);
+      
+    });
+    
+    it('should clip 0 or less to empty', function() {
+      
+      var longString = 'hello I am a long string';
+      var clippedString = tools.clippy(longString, 0);
+      
+      expect(clippedString).to.have.length(0);
+      expect(clippedString).to.be.empty;
+
+      var minusString = tools.clippy(longString, -1);
+
+      expect(minusString).to.have.length(0);
+      expect(minusString).to.be.empty;
+      
+    }); 
+    
+    it('should return empty string if string not passed in', function() {
+      
+      expect(tools.cleansey()).to.be.empty;
+      expect(tools.cleansey({})).to.be.empty;
+      expect(tools.cleansey([])).to.be.empty;
+      expect(tools.cleansey(null)).to.be.empty;
+      expect(tools.cleansey(undefined)).to.be.empty;
+
+    });
+    
+  })
 
 });

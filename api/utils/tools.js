@@ -24,6 +24,8 @@ function cleansey(value) {
 
   }
   
+  return '';
+  
 }
 
 /**
@@ -45,10 +47,32 @@ function removey(remove, value) {
   
 }
 
+/**
+ *
+ * @param clippable
+ * @param clipLength
+ * @returns {string}
+ */
+function clippy(clippable, clipLength) {
+  
+  if (typeof clippable === 'string' && 
+    typeof clipLength === 'number') {
+   
+    clipLength = clipLength < 0 ? 0 : clipLength;
+    
+    return clippable.slice(0, clipLength);
+    
+  }
+  
+  return '';
+  
+}
+
 module.exports = {
   
   existy: existy,
   cleansey: cleansey,
-  removey: removey
+  removey: removey,
+  clippy: clippy
   
 };
