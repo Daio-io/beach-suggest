@@ -6,7 +6,7 @@ var app = koa();
 var settings = require('./api/conf/api.settings');
 
 // Bootstrapping
-require('./api/conf/api.bootstrap')();
+require('./api/conf/api.bootstrap')(app);
 // Routes
 require('./api/conf/api.routes')(app);
 
