@@ -12,7 +12,7 @@ exports.suggestBeach = function *() {
       tools.clippy(safeSearch, 50), 'i'
     );
     
-    let query = BeachModel.find({name: search}, 'id name country');
+    let query = BeachModel.find({name: search}, 'id name country').cache();
 
     this.body = yield query.exec();
     

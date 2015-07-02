@@ -11,6 +11,10 @@ module.exports = {
           keepAlive: 1
         }
       }
+    },     
+    cache: {
+      max: 0,
+      maxAge: 0
     }
   },
 
@@ -23,6 +27,10 @@ module.exports = {
           keepAlive: 1
         }
       }
+    },
+    cache: {
+      max: 50,
+      maxAge: 1000 * 60 * 5
     }
   }
 

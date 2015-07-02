@@ -2,9 +2,12 @@
 
 var mongoose = require('mongoose');
 var config = require('./db.config');
+var cache = require('mongoose-cache');
 
 module.exports = function() {
 
+  cache.install(mongoose, config.cache);
+  
   switch (process.env.NODE_ENV) {
     case 'live':
 
