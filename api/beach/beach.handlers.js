@@ -1,7 +1,7 @@
 'use strict';
 
-var tooly = require('tooly');
-var BeachModel = require('./beach.model');
+const tooly = require('tooly');
+const BeachModel = require('./beach.model');
 
 exports.suggestBeach = function *() {
 
@@ -12,7 +12,9 @@ exports.suggestBeach = function *() {
       tooly.clippy(safeSearch, 50), 'i'
     );
     
-    let query = BeachModel.find({name: search}, 'id name country').cache();
+    let query = BeachModel
+      .find({name: search}, '-_id id name country')
+      .cache();
 
     this.body = yield query.exec();
     
