@@ -2,6 +2,7 @@
 
 const tooly = require('tooly');
 const BeachModel = require('./beach.model');
+const excludeFields = '-_id, -__v';
 
 exports.suggestBeach = function *() {
 
@@ -13,7 +14,7 @@ exports.suggestBeach = function *() {
     );
     
     let query = BeachModel
-      .find({name: search}, '-_id id name country')
+      .find({name: search}, excludeFields)
       .cache();
 
     this.body = yield query.exec();
@@ -22,4 +23,15 @@ exports.suggestBeach = function *() {
     this.body = [];
   }
 
+};
+
+exports.suggestBeachByCountry = function *() {
+
+  let safeSearch = tooly.cleansey(this.params.code);
+  let query = BeachModel
+    .find({country: safeSearch}, excludeFields)
+    .cache();
+  
+  this.body = yield query.exec();
+  
 };
