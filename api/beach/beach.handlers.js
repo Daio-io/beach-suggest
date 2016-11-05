@@ -29,7 +29,7 @@ exports.suggestBeachByCountry = function *() {
   if (tooly.existy(this.query.q)) {
     queryObj.name = createNameSearch(this.query);
   }
-  
+
     let query = BeachModel
     .find(queryObj, excludeFields)
     .cache();
