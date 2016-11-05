@@ -2,7 +2,7 @@
 
 const tooly = require('tooly');
 const BeachModel = require('./beach.model');
-const excludeFields = '-_id, -__v';
+const excludeFields = '-_id -__v';
 
 exports.suggestBeach = function *() {
 
@@ -20,7 +20,7 @@ exports.suggestBeach = function *() {
     this.body = yield query.exec();
     
   } else {
-    this.body = [];
+    this.body = yield BeachModel.find({}, excludeFields).cache().exec();
   }
 
 };
