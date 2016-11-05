@@ -8,13 +8,8 @@ exports.suggestBeach = function *() {
 
   if (tooly.existy(this.query.q)) {
 
-    let safeSearch = tooly.cleansey(this.query.q);
-    let search = new RegExp(
-      tooly.clippy(safeSearch, 50), 'i'
-    );
-    
     let query = BeachModel
-      .find({name: search}, excludeFields)
+      .find({name: createNameSearch(this.query)}, excludeFields)
       .cache();
 
     this.body = yield query.exec();
@@ -28,10 +23,24 @@ exports.suggestBeach = function *() {
 exports.suggestBeachByCountry = function *() {
 
   let safeSearch = tooly.cleansey(this.params.code);
-  let query = BeachModel
-    .find({country: safeSearch}, excludeFields)
+
+  let queryObj = {country: safeSearch};
+
+  if (tooly.existy(this.query.q)) {
+    queryObj.name = createNameSearch(this.query);
+  }
+  
+    let query = BeachModel
+    .find(queryObj, excludeFields)
     .cache();
   
   this.body = yield query.exec();
   
 };
+
+function createNameSearch(query) {
+  let safeSearch = tooly.cleansey(query.q);
+  return new RegExp(
+    tooly.clippy(safeSearch, 50), 'i'
+  );
+}
